@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ScrollView
 import android.widget.TextView
 
 class AdventureActivity : AppCompatActivity() {
@@ -26,21 +28,21 @@ class AdventureActivity : AppCompatActivity() {
             insets
         }
 
+        val scrollView = findViewById<ScrollView>(R.id.scrollableContent)
+        scrollView.post {
+            scrollView.fullScroll(ScrollView.FOCUS_DOWN)
+        }
+
+
+
 
 
 
 
         //mozesz wyjebac pod spodem
 
-        val buttonPowrot = findViewById<Button>(R.id.goBack);
-        val buttonLvl = findViewById<Button>(R.id.button2);
-        val lvlText = findViewById<TextView>(R.id.lvlText)
-        lvlText.text = "lvl: " + gameData.getLevel().toString();
+        val buttonPowrot = findViewById<ImageButton>(R.id.goBack);
 
-        buttonLvl.setOnClickListener {
-            gameData.addLevel();
-            lvlText.text = "lvl: " + gameData.getLevel().toString()
-        }
 
 
         buttonPowrot.setOnClickListener {
