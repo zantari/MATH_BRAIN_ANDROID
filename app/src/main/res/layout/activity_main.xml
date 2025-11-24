@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#2596be"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    >
+
+
+
+    <ImageButton
+        android:id="@+id/button"
+
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="right"
+        android:background="@drawable/button_circle_background"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/settings"
+        android:layout_margin="10dp"
+        app:tint="#1a3d59"
+        android:elevation="10dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        app:srcCompat="@drawable/mathbrainlogo" />
+
+    <TextView
+        android:id="@+id/rankedScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="🏆: 0"
+        android:textSize="35sp"
+        android:textColor="#1a3d59"
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo"
+        />
+    <TextView
+        android:id="@+id/adventureScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="🗺️: 0"
+        android:fontFamily="@font/baloo"
+        android:textSize="35sp"
+        android:textColor="#1a3d59"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/adventureBtn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#f78c92"
+        android:gravity="start"
+        android:padding="15dp"
+        android:paddingStart="30dp"
+        android:text="🗺️ ADVENTURE"
+        android:textColor="#1a3d59"
+        android:textSize="40sp"
+        android:fontFamily="@font/baloo"
+        app:cornerRadius="10dp"
+        android:elevation="10dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rankedBtn"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#E7666E"
+        android:paddingStart="30dp"
+
+        android:gravity="start"
+        android:padding="15dp"
+        android:text="🏆 RANKED"
+        android:textColor="#1a3d59"
+        android:textSize="40sp"
+        app:cornerRadius="10dp"
+        android:fontFamily="@font/baloo"
+        android:elevation="10dp"
+        />
+
+
+</LinearLayout>
