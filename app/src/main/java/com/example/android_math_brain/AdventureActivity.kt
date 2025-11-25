@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -96,28 +97,26 @@ class AdventureActivity : AppCompatActivity() {
             if (button11.getLocalVisibleRect(scrollBounds) || button14.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "SUBTRACTION"
                 chapterName.setTextColor(Color.parseColor("#793679"))
-                topLayout.setBackgroundColor(Color.parseColor("#A249A3"))
+                topLayout.setBackgroundResource(R.drawable.rounded_layout_sub)
                 goBack.background.setColorFilter(Color.parseColor("#A249A3"), PorterDuff.Mode.SRC_IN)
 
             } else if (button21.getLocalVisibleRect(scrollBounds) || button24.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "MULTIPLICATION"
                 chapterName.setTextColor(Color.parseColor("#A30D14"))
-                topLayout.setBackgroundColor(Color.parseColor("#EB1C24"))
+                topLayout.setBackgroundResource(R.drawable.rounded_layout_mul)
                 goBack.background.setColorFilter(Color.parseColor("#EB1C24"), PorterDuff.Mode.SRC_IN)
 
             } else if (button31.getLocalVisibleRect(scrollBounds) || button35.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "DIVISION"
                 chapterName.setTextColor(Color.parseColor("#C5BB00"))
-                topLayout.setBackgroundColor(Color.parseColor("#FDF000"))
+                topLayout.setBackgroundResource(R.drawable.rounded_layout_div)
                 goBack.background.setColorFilter(Color.parseColor("#FDF000"), PorterDuff.Mode.SRC_IN)
 
             } else {
                 chapterName.text = "ADDITION"
                 chapterName.setTextColor(Color.parseColor("#22B045"))
-                topLayout.setBackgroundColor(Color.parseColor("#B4E41D"))
-                goBack.background.setColorFilter(
-                    Color.parseColor("#B4E41D"),
-                    PorterDuff.Mode.SRC_IN
+                topLayout.setBackgroundResource(R.drawable.rounded_layout)
+                goBack.background.setColorFilter(Color.parseColor("#B4E41D"), PorterDuff.Mode.SRC_IN
                 )
             }
             // === KONIEC NOWEJ FUNKCJONALNOŚCI ===

@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="#2596be"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/test2"
+
 
     android:orientation="vertical"
     tools:context=".AdventureActivity">
@@ -14,13 +15,13 @@
     <LinearLayout
         android:id="@+id/topLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/rounded_layout"
         android:orientation="horizontal"
-
+        android:elevation="20dp"
         android:padding="10dp">
 
         <ImageButton
@@ -36,17 +37,19 @@
         <View
             android:layout_width="2dp"
             android:layout_height="60dp"
+            android:layout_marginTop="7dp"
             android:background="#FFFFFF" />
 
         <TextView
             android:id="@+id/chapterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="11dp"
             android:fontFamily="@font/baloo"
             android:text="ADDITION"
             android:textColor="#22B045"
-            android:textSize="32dp" />
+            android:textSize="35dp" />
 
     </LinearLayout>
 
@@ -64,523 +67,593 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button40"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="120dp"
-                android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="40"
+                android:layout_marginRight="120dp"
                 android:textColor="#C5BB00"
-                android:textSize="45dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="47dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button39"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="39"
                 android:textColor="#C5BB00"
-                android:textSize="47dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="47dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button38"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="38"
+                android:layout_marginLeft="120dp"
                 android:textColor="#C5BB00"
-                android:textSize="47dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="47dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button37"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="37"
                 android:textColor="#C5BB00"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button36"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:layout_marginRight="120dp"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="36"
                 android:textColor="#C5BB00"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button35"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="35"
                 android:textColor="#C5BB00"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button34"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="34"
+                android:layout_marginLeft="120dp"
                 android:textColor="#C5BB00"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button33"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="33"
                 android:textColor="#C5BB00"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button32"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="32"
+                android:layout_marginRight="120dp"
                 android:textColor="#C5BB00"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button31"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#FDF000"
+                android:background="@drawable/button_shadow_div"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="31"
                 android:textColor="#C5BB00"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_div"
+                android:textSize="48dp"/>
 
 
 
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button30"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="30"
+                android:layout_marginLeft="120dp"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button29"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="29"
                 android:textColor="#A30D14"
-                android:textSize="47dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="47dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button28"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="28"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button27"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="27"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button26"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
+
                 android:text="26"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button25"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="25"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button24"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="24"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button23"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="23"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button22"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="22"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button21"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#EB1C24"
+                android:background="@drawable/button_shadow_mul"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="21"
                 android:textColor="#A30D14"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_mul"
+                android:textSize="48dp"/>
 
 
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button20"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="20"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button19"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="19"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button18"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="18"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button17"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="17"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button16"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="16"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button15"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="15"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button14"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="7dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="14"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button13"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="13"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button12"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="120dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="12"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button11"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#A249A3"
+                android:background="@drawable/button_shadow_sub"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="11"
                 android:textColor="#793679"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_sub"
+                android:textSize="48dp"/>
 
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button10"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="10"
                 android:textColor="#22B045"
-                android:textSize="48dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="48dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button9"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="9"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button8"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="8"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button7"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="7"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button6"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="20dp"
                 android:text="6"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button5"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="5"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button4"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="4"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button3"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="3"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button2"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
-                android:paddingLeft="10dp"
                 android:text="2"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button1"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="#B4E41D"
+                android:background="@drawable/button_shadow_add"
+                android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
                 android:text="1"
                 android:textColor="#22B045"
-                android:textSize="60dp" />
+                android:stateListAnimator="@animator/button_state_add"
+                android:textSize="60dp"/>
+
 
 
 
