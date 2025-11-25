@@ -1,5 +1,6 @@
 package com.example.android_math_brain
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Rect
@@ -86,6 +87,16 @@ class AdventureActivity : AppCompatActivity() {
         val chapterName = findViewById<TextView>(R.id.chapterName)
         val topLayout = findViewById<LinearLayout>(R.id.topLayout)
         val goBack = findViewById<ImageButton>(R.id.goBack)
+
+        button1.setOnClickListener {
+            val intent = Intent(this, LevelActivity::class.java)
+            intent.putExtra("LEVEL_ID", 1)
+            startActivity(intent)
+
+        }
+
+
+
 
 
 
