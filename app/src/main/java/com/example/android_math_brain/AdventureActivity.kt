@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.Rect
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
@@ -17,6 +18,38 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class AdventureActivity : AppCompatActivity() {
+
+    private fun handleLevelClick(v: View){
+        var currLvl = gameData.getLevel()
+        var clickedLevel = 0
+
+        when(v.id){
+            R.id.button1 -> clickedLevel = 1
+            R.id.button2 -> clickedLevel = 2
+            R.id.button3 -> clickedLevel = 3
+            R.id.button4 -> clickedLevel = 4
+            //itd
+        }
+
+        if(clickedLevel >0 && clickedLevel == currLvl){
+            val intent = Intent(this, LevelActivity::class.java)
+            intent.putExtra("LEVEL_ID", clickedLevel)
+            startActivity(intent)
+
+            return
+        }
+        else if(clickedLevel > currLvl) {
+            Toast.makeText(this, "Your current level is "+currLvl+", try to pass it!", Toast.LENGTH_SHORT).show()
+            return
+        }
+        else if(clickedLevel < currLvl) {
+            Toast.makeText(this, "You have already passed this level", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        return
+    }
+
     private lateinit var gameData: GameData // nie usuwaj
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +63,9 @@ class AdventureActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+
 
         val scrollView = findViewById<ScrollView>(R.id.scrollableContent)
         scrollView.post {
@@ -88,12 +124,17 @@ class AdventureActivity : AppCompatActivity() {
         val topLayout = findViewById<LinearLayout>(R.id.topLayout)
         val goBack = findViewById<ImageButton>(R.id.goBack)
 
-        button1.setOnClickListener {
-            val intent = Intent(this, LevelActivity::class.java)
-            intent.putExtra("LEVEL_ID", 1)
-            startActivity(intent)
 
-        }
+
+
+
+
+        button1.setOnClickListener(::handleLevelClick)
+        button2.setOnClickListener(::handleLevelClick)
+        button3.setOnClickListener(::handleLevelClick)
+        button4.setOnClickListener(::handleLevelClick)
+        button5.setOnClickListener(::handleLevelClick)
+
 
 
 

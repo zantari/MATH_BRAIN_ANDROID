@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
 
         advBtn.setOnClickListener {
+            gameData.setLevel(2)
             Intent(this, AdventureActivity::class.java).also {
                 startActivity(it)
             }

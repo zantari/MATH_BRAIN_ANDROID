@@ -103,9 +103,10 @@
         android:max="4"
         android:layout_marginTop="20dp"
 
-        android:progressTint="#928CDB77"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"  android:progressTint="#928CDB77"
         android:thumb="@android:drawable/btn_star_big_on"
         android:tickMark="@android:drawable/btn_star_big_off" />
-
 
 </LinearLayout>
