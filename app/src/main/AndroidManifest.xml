@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ANDROID_MATH_BRAIN">
         <activity
+            android:name=".EndLevelActivity"
+            android:exported="false" />
+        <activity
             android:name=".LevelActivity"
             android:exported="false" />
         <activity
