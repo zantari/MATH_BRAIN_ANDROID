@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_marginTop="40dp"
+        android:id="@+id/brainImg"
         android:src="@drawable/happybrain2"
         />
 
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
+        android:id="@+id/textUnderBrain"
         android:src="@drawable/levelcleard"
         />
 
@@ -33,12 +35,17 @@
 
 
     <TextView
+        android:id="@+id/scoreText"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:textSize="60dp"
+        android:layout_height="wrap_content"
+
+        android:textSize="10sp"
         android:layout_gravity="center"
         android:fontFamily="@font/baloo"
-        android:text="Score: 100%"/>
+        android:text="Score: 100%"
+
+        />
+<!--    textsize w textview wyzej bylo 60sp zmienilem dla testow-->
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -46,16 +53,22 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/homeBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="return"/>
 
         <Button
+            android:id="@+id/tryAgainBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="retry"/>
 
         <Button
+            android:id="@+id/nextLevelBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="nextLvl"/>
 
     </LinearLayout>
 

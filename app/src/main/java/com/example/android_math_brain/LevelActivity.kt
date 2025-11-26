@@ -88,6 +88,7 @@ class LevelActivity : AppCompatActivity() {
         levelId = intent.getIntExtra("LEVEL_ID", -1)
 
         if(levelId == -1 || levelId > levelSequence.size){
+            Toast.makeText(this, "WE DONT HAVE THIS LEVEL YET", Toast.LENGTH_LONG).show()
             finish()
             return
         }
@@ -138,16 +139,26 @@ class LevelActivity : AppCompatActivity() {
             if (currQuestionIndex < currentLevelQuestion.size) {
                 loadQuestion()
             } else {
-                Toast.makeText(this, "YOU WON!!!! " + wrongAnswers +"<- wrong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "YOU WON! with " + wrongAnswers +" wrong answers", Toast.LENGTH_SHORT).show()
 
-                if(levelId == gameData.getLevel()) {
-                    gameData.addLevel()
-                }
+
 
                 val intent = Intent(this, EndLevelActivity::class.java)
+                val procenty = (currentLevelQuestion.size - wrongAnswers) * 100 / currentLevelQuestion.size
+                val isWon = procenty>33
+
+                if(isWon){
+                    if(levelId == gameData.getLevel()) {
+                        gameData.addLevel()
+                    }
+                }
+
                 intent.putExtra("all_answers", currentLevelQuestion.size.toInt())
                 intent.putExtra("passed_level", levelId)
                 intent.putExtra("wrong_answers", wrongAnswers)
+                intent.putExtra("procenty", procenty)
+                intent.putExtra("isWon", isWon)
+
                 startActivity(intent)
                 finish()
                 return

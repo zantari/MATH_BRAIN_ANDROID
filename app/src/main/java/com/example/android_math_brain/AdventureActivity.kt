@@ -76,10 +76,7 @@ class AdventureActivity : AppCompatActivity() {
             scrollView.fullScroll(ScrollView.FOCUS_DOWN)
         }
 
-        val buttonPowrot = findViewById<ImageButton>(R.id.goBack)
-        buttonPowrot.setOnClickListener {
-            finish()
-        }
+
         
         val button1 = findViewById<Button>(R.id.button1)
         val button2 = findViewById<Button>(R.id.button2)
@@ -126,6 +123,13 @@ class AdventureActivity : AppCompatActivity() {
         val chapterName = findViewById<TextView>(R.id.chapterName)
         val topLayout = findViewById<LinearLayout>(R.id.topLayout)
         val goBack = findViewById<ImageButton>(R.id.goBack)
+
+        goBack.setOnClickListener {
+            Intent(this, MainActivity::class.java).also{
+                startActivity(it)
+                finish()
+            }
+        }
 
 
 
