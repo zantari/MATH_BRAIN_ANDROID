@@ -58,6 +58,8 @@ class LevelActivity : AppCompatActivity() {
 
 
 
+
+
     private val levelSequence = listOf(lvl1, lvl2) //JAK DODASZ POZIOM PRIVATE VAL LVL.. TO DODAJ GO TU!!!
 
 

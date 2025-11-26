@@ -76,8 +76,7 @@ class AdventureActivity : AppCompatActivity() {
         buttonPowrot.setOnClickListener {
             finish()
         }
-
-        // === NOWA FUNKCJONALNOŚĆ ===
+        
         val button1 = findViewById<Button>(R.id.button1)
         val button2 = findViewById<Button>(R.id.button2)
         val button3 = findViewById<Button>(R.id.button3)
