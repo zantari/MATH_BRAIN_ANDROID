@@ -38,38 +38,61 @@
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:textSize="10sp"
         android:layout_gravity="center"
         android:fontFamily="@font/baloo"
         android:text="Score: 100%"
+        android:textColor="#F9C307"
+        android:textSize="60sp"
 
         />
 <!--    textsize w textview wyzej bylo 60sp zmienilem dla testow-->
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/homeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="return"/>
+            android:layout_width="100dp"
+            android:layout_height="105dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_shadow_end_lvl"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/baloo"
+            android:stateListAnimator="@animator/button_state_end_lvl"
+            android:text="HOME"
+            android:textColor="#D7433F"
+            android:textSize="30dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/tryAgainBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="retry"/>
+            android:layout_width="100dp"
+            android:layout_height="105dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_shadow_end_lvl"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/baloo"
+            android:text="RETRY"
+            android:layout_marginLeft="25dp"
+            android:textColor="#D7433F"
+            android:stateListAnimator="@animator/button_state_div"
+            android:textSize="30dp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nextLevelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="nextLvl"/>
-
+            android:layout_width="100dp"
+            android:layout_height="105dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_shadow_end_lvl"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/baloo"
+            android:text="NEXT"
+            android:layout_marginLeft="25dp"
+            android:textColor="#D7433F"
+            android:stateListAnimator="@animator/button_state_end_lvl"
+            android:textSize="30dp"/>
     </LinearLayout>
 
 

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.toColor
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -22,7 +23,7 @@ class EndLevelActivity : AppCompatActivity() {
 
     private lateinit var brainImg: ImageView
     private lateinit var textUnderBrain: ImageView
-    private lateinit var stars: ImageView
+    private lateinit var stars1: ImageView
     private lateinit var scoreText: TextView
     private lateinit var homeBtn: Button
     private lateinit var tryAgainBtn: Button
@@ -81,7 +82,7 @@ class EndLevelActivity : AppCompatActivity() {
 
         brainImg = findViewById(R.id.brainImg)
         textUnderBrain = findViewById(R.id.textUnderBrain)
-        stars = findViewById(R.id.star1)
+        stars1 = findViewById(R.id.star1)
         scoreText = findViewById(R.id.scoreText)
         homeBtn = findViewById(R.id.homeBtn)
         tryAgainBtn = findViewById(R.id.tryAgainBtn)
@@ -93,8 +94,30 @@ class EndLevelActivity : AppCompatActivity() {
         }
         //ten if zeby na minus nie wypioerdalalo
 
+        if (isWon && procenty in 33..55) {
+            brainImg.setImageResource(R.drawable.brainguybook)
+            textUnderBrain.setImageResource(R.drawable.levelcleard)
+            stars1.setImageResource(R.drawable.star1)
+            scoreText.text = "Score: $procenty%"
+        } else if(isWon && procenty in 51..75) {
+            brainImg.setImageResource(R.drawable.brainguy)
+            textUnderBrain.setImageResource(R.drawable.levelcleard)
+            stars1.setImageResource(R.drawable.star2)
+            scoreText.text = "Score: $procenty%"
+        } else if (isWon && procenty in 76..100) {
+            brainImg.setImageResource(R.drawable.happybrain2)
+            textUnderBrain.setImageResource(R.drawable.levelcleard)
+            stars1.setImageResource(R.drawable.stars3)
+            scoreText.text = "Score: $procenty%"
+        }else {
+            brainImg.setImageResource(R.drawable.brainguy)
+            textUnderBrain.setImageResource(R.drawable.levelfailed)
+            stars1.setImageResource(R.drawable.star0)
+            scoreText.text = "Score: $procenty%"
+        }
 
-        scoreText.text = "masz " + procenty + "%, przeszedles? " + isWon.toString() + " poziom ktory robiles: "+ passedLevel.toString() + ", aktualny poziom teraz "+aktualnyPoziom.toString()
+
+        //scoreText.text = "masz " + procenty + "%, przeszedles? " + isWon.toString() + " poziom ktory robiles: "+ passedLevel.toString() + ", aktualny poziom teraz "+aktualnyPoziom.toString()
         //wypisuje % i true/false poziom ktory sie przeszlo i poziom na ktorym jest uzytkownik wyjeb to i zrob po swojemu to tylko na testa
 
 

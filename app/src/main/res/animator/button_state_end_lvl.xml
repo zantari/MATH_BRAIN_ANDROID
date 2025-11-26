@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Stan pressed -->
+    <item android:state_pressed="true">
+        <objectAnimator
+            android:propertyName="translationY"
+            android:duration="50"
+            android:valueFrom="0"
+            android:valueTo="5"
+            android:valueType="floatType"/>
+    </item>
+
+    <!-- Stan normalny -->
+    <item>
+        <objectAnimator
+            android:propertyName="translationY"
+            android:duration="50"
+            android:valueFrom="5"
+            android:valueTo="0"
+            android:valueType="floatType"/>
+    </item>
+
+</selector>
