@@ -12,9 +12,11 @@ import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
 
 class LevelActivity : AppCompatActivity() {
+    private lateinit var gameData: GameData
+    private var wrongAnswers = 0;
     private var levelId = -1
     private var currQuestionIndex = 0;
-    private lateinit var currentLevelQuestion: List<Question>
+    private lateinit var currentLevelQuestion: MutableList<Question>
 
     private lateinit var btn1: Button;
     private lateinit var btn2: Button;
@@ -27,16 +29,23 @@ class LevelActivity : AppCompatActivity() {
     private val lvl1 = listOf(
         Question("2 + 2 = ?", listOf("3", "8", "4"),  2),
 
-        Question("8 + 8 = ?", listOf("16", "13", "21"),  0)
-        //ten poziom ma 2 etapy wiec tylko 2 razy Question
+        Question("4 + 4 = ?", listOf("8", "13", "21"),  0),
+
+        Question("3 + 6 = ?", listOf("8", "9", "10"),  1)
+        //ten poziom ma 3 etapy wiec tylko 3 razy Question
     )
 
     private val lvl2 = listOf(
-        Question("lvl 2 ?", listOf("-4", "8", "67"),  2),
+        Question("8 + 8 = ?", listOf("12", "16", "27"),  1),
 
-        Question("8 + 8 = ?", listOf("16", "13", "21"),  0),
-        Question("3ETAP", listOf("16", "13", "21"),  0)
-        //ten poziom ma 3 etapy wiec 3 razy Question
+        Question("14 + 3 = ?", listOf("17", "13", "21"),  0),
+
+        Question("21 + 8 = ?", listOf("26", "23", "29"),  2),
+
+        Question("7 + 3 = ?", listOf("10", "3", "9"),  0),
+
+        Question("11 + 3 = ?", listOf("14", "13", "15"),  0)
+        //ten poziom ma 5 etapy wiec 5 razy Question
     )
 
 
@@ -64,6 +73,9 @@ class LevelActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        gameData = GameData.getInstance(this)
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_level)
@@ -87,7 +99,7 @@ class LevelActivity : AppCompatActivity() {
          excText = findViewById<TextView>(R.id.excText)
         progressBar = findViewById(R.id.progressBar)
         progressBar.setOnTouchListener { v, event -> true }
-        currentLevelQuestion = levelSequence[levelId-1]
+        currentLevelQuestion = levelSequence[levelId-1].toMutableList()
 
         btn1.setOnClickListener { checkAnswer(0) }
         btn2.setOnClickListener { checkAnswer(1) }
@@ -117,13 +129,21 @@ class LevelActivity : AppCompatActivity() {
     }
 
     private fun checkAnswer(selectedAnswerIndex: Int) {
+
+
         val currentQuestion = currentLevelQuestion[currQuestionIndex]
+
         if (selectedAnswerIndex == currentQuestion.correctAnswerIndex) {
             currQuestionIndex++
             if (currQuestionIndex < currentLevelQuestion.size) {
                 loadQuestion()
             } else {
-                Toast.makeText(this, "WYGRALES! ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "YOU WON!!!! " + wrongAnswers +"<- wrong", Toast.LENGTH_SHORT).show()
+
+                if(levelId == gameData.getLevel()) {
+                    gameData.addLevel()
+                }
+
                 Intent(this, EndLevelActivity::class.java).also {
                     startActivity(it)
                 }
@@ -135,7 +155,11 @@ class LevelActivity : AppCompatActivity() {
 
         }
         else{
-            Toast.makeText(this, "zla odpowiedz ", Toast.LENGTH_LONG).show()
+            wrongAnswers++
+            Toast.makeText(this, "wrong answer correct is: "+ currentQuestion.answers[currentQuestion.correctAnswerIndex].toString() , Toast.LENGTH_LONG).show()
+            currentLevelQuestion.removeAt(currQuestionIndex)
+            currentLevelQuestion.add(currentQuestion)
+            loadQuestion()
         }
 
     }
