@@ -44,6 +44,10 @@ class AdventureActivity : AppCompatActivity() {
         }
         else if(clickedLevel < currLvl) {
             Toast.makeText(this, "You have already passed this level", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, LevelActivity::class.java)
+            intent.putExtra("LEVEL_ID", clickedLevel)
+            startActivity(intent)
+
             return
         }
 

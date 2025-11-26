@@ -8,6 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
     private lateinit var gameData: GameData
@@ -40,11 +43,36 @@ class MainActivity : AppCompatActivity() {
 
 
         advBtn.setOnClickListener {
+
             Intent(this, AdventureActivity::class.java).also {
                 startActivity(it)
             }
         }
 
+        rankBtn.setOnClickListener {
+            lifecycleScope.launch {
+                rankBtn.text = "lvl = 0"
+
+                gameData.setLevel(1)
+                delay(500)
+                onResume()
+
+                rankBtn.text = "\uD83C\uDFC6 RANKED"
+            }
+        }
+
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+
+        val adventureScoreText = findViewById<TextView>(R.id.adventureScore);
+
+
+        adventureScoreText.text = "\uD83D\uDDFA\uFE0F: " + gameData.getLevel().toString()
     }
 
 

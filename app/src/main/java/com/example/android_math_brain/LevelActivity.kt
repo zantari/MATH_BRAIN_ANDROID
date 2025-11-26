@@ -144,9 +144,14 @@ class LevelActivity : AppCompatActivity() {
                     gameData.addLevel()
                 }
 
-                Intent(this, EndLevelActivity::class.java).also {
-                    startActivity(it)
-                }
+                val intent = Intent(this, EndLevelActivity::class.java)
+                intent.putExtra("all_answers", currentLevelQuestion.size.toInt())
+                intent.putExtra("passed_level", levelId)
+                intent.putExtra("wrong_answers", wrongAnswers)
+                startActivity(intent)
+                finish()
+                return
+
             }
 
 
