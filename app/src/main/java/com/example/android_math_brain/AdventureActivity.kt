@@ -145,13 +145,13 @@ class AdventureActivity : AppCompatActivity() {
             scrollView.getHitRect(scrollBounds)
 
             // Sprawdzenie, czy przycisk 11 jest widoczny
-            if (button11.getLocalVisibleRect(scrollBounds) || button14.getLocalVisibleRect(scrollBounds)) {
+            if (button11.getLocalVisibleRect(scrollBounds) || button15.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "SUBTRACTION"
                 chapterName.setTextColor(Color.parseColor("#793679"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_sub)
                 goBack.background.setColorFilter(Color.parseColor("#A249A3"), PorterDuff.Mode.SRC_IN)
 
-            } else if (button21.getLocalVisibleRect(scrollBounds) || button24.getLocalVisibleRect(scrollBounds)) {
+            } else if (button21.getLocalVisibleRect(scrollBounds) || button25.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "MULTIPLICATION"
                 chapterName.setTextColor(Color.parseColor("#A30D14"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_mul)

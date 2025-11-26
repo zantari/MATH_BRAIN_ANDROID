@@ -183,41 +183,44 @@
                 android:stateListAnimator="@animator/button_state_div"
                 android:textSize="48dp"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button32"
-                android:layout_width="100dp"
-                android:layout_height="105dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/button_shadow_div"
-                android:backgroundTint="@null"
-                android:fontFamily="@font/baloo"
-                android:text="32"
-                android:layout_marginRight="120dp"
-                android:textColor="#C5BB00"
-                android:stateListAnimator="@animator/button_state_div"
-                android:textSize="48dp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button39"
-                android:layout_width="100dp"
-                android:layout_height="105dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/button_shadow_div"
-                android:backgroundTint="@null"
-                android:fontFamily="@font/baloo"
-                android:stateListAnimator="@animator/button_state_div"
-                android:text="39"
-                android:textColor="#C5BB00"
-                android:textSize="47dp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button32"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/button_shadow_div"
+                    android:backgroundTint="@null"
+                    android:fontFamily="@font/baloo"
+                    android:stateListAnimator="@animator/button_state_div"
+                    android:text="32"
+                    android:textColor="#C5BB00"
+                    android:textSize="48dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/mojObrazek6"
+                    android:layout_width="200dp"
+                    android:layout_height="170dp"
+                    android:layout_marginStart="50dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/chickenguy"
+                    app:layout_constraintStart_toEndOf="@+id/button32"
+                    app:layout_constraintTop_toTopOf="@+id/button32"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button31"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/button_shadow_div"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -234,7 +237,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="22dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -249,7 +252,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="22dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -264,7 +267,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="19dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -278,7 +281,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="19dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -287,28 +290,43 @@
                 android:stateListAnimator="@animator/button_state_mul"
                 android:textSize="48dp"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button26"
-                android:layout_width="100dp"
-                android:layout_height="105dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/button_shadow_mul"
-                android:backgroundTint="@null"
-                android:fontFamily="@font/baloo"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                android:text="26"
-                android:textColor="#A30D14"
-                android:stateListAnimator="@animator/button_state_mul"
-                android:textSize="48dp"/>
+                <ImageView
+                    android:id="@+id/mojObrazek5"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/beeguy2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button26"
+                    android:layout_width="100dp"
+                    android:layout_height="105dp"
+                    android:background="@drawable/button_shadow_mul"
+                    android:backgroundTint="@null"
+                    android:fontFamily="@font/baloo"
+                    android:text="26"
+                    android:textColor="#A30D14"
+                    android:stateListAnimator="@animator/button_state_mul"
+                    android:textSize="48dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="22dp"
+                    app:layout_constraintStart_toEndOf="@+id/mojObrazek5"
+                    app:layout_constraintTop_toTopOf="@+id/mojObrazek5"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button25"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="22dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -323,7 +341,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -337,7 +355,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -352,7 +370,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -366,7 +384,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_mul"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -377,27 +395,43 @@
 
 
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button20"
-                android:layout_width="100dp"
-                android:layout_height="105dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="120dp"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/button_shadow_sub"
-                android:backgroundTint="@null"
-                android:fontFamily="@font/baloo"
-                android:text="20"
-                android:textColor="#793679"
-                android:stateListAnimator="@animator/button_state_sub"
-                android:textSize="48dp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button20"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/button_shadow_sub"
+                    android:backgroundTint="@null"
+                    android:fontFamily="@font/baloo"
+                    android:stateListAnimator="@animator/button_state_sub"
+                    android:text="20"
+                    android:textColor="#793679"
+                    android:textSize="48dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/mojObrazek4"
+                    android:layout_width="180dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bookguy"
+                    app:layout_constraintStart_toEndOf="@+id/button20"
+                    app:layout_constraintTop_toTopOf="@+id/button20"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button19"
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -412,7 +446,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -426,7 +460,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -441,7 +475,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -455,7 +489,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -469,7 +503,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/mojObrazek"
+                    android:id="@+id/mojObrazek3"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="5dp"
@@ -490,9 +524,9 @@
                     android:stateListAnimator="@animator/button_state_sub"
                     android:textSize="48dp"
                     android:layout_marginStart="100dp"
-                    android:layout_marginTop="7dp"
-                    app:layout_constraintStart_toEndOf="@+id/mojObrazek"
-                    app:layout_constraintTop_toTopOf="@+id/mojObrazek"/>
+                    android:layout_marginTop="14dp"
+                    app:layout_constraintStart_toEndOf="@+id/mojObrazek3"
+                    app:layout_constraintTop_toTopOf="@+id/mojObrazek3"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -500,7 +534,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -514,7 +548,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginRight="120dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
@@ -529,7 +563,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_sub"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -545,7 +579,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_add"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -559,7 +593,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_add"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -606,7 +640,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_add"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -621,7 +655,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="120dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_add"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -635,7 +669,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_add"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -651,7 +685,7 @@
                 android:layout_height="105dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="120dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_add"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
@@ -666,7 +700,7 @@
                 android:layout_width="100dp"
                 android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_shadow_add"
                 android:backgroundTint="@null"
                 android:fontFamily="@font/baloo"
