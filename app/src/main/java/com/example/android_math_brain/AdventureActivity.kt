@@ -134,6 +134,7 @@ class AdventureActivity : AppCompatActivity() {
         }
 
         val chapterName = findViewById<TextView>(R.id.chapterName)
+        val chapter = findViewById<TextView>(R.id.chapter)
         val topLayout = findViewById<LinearLayout>(R.id.topLayout)
         val goBack = findViewById<ImageButton>(R.id.goBack)
 
@@ -160,24 +161,28 @@ class AdventureActivity : AppCompatActivity() {
             if (button11.getLocalVisibleRect(scrollBounds) || button15.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "SUBTRACTION"
                 chapterName.setTextColor(Color.parseColor("#793679"))
+                chapter.setTextColor(Color.parseColor("#793679"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_sub)
                 goBack.background.setColorFilter(Color.parseColor("#A249A3"), PorterDuff.Mode.SRC_IN)
 
             } else if (button21.getLocalVisibleRect(scrollBounds) || button25.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "MULTIPLICATION"
                 chapterName.setTextColor(Color.parseColor("#A30D14"))
+                chapter.setTextColor(Color.parseColor("#A30D14"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_mul)
                 goBack.background.setColorFilter(Color.parseColor("#EB1C24"), PorterDuff.Mode.SRC_IN)
 
             } else if (button31.getLocalVisibleRect(scrollBounds) || button35.getLocalVisibleRect(scrollBounds)) {
                 chapterName.text = "DIVISION"
                 chapterName.setTextColor(Color.parseColor("#C5BB00"))
+                chapter.setTextColor(Color.parseColor("#C5BB00"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_div)
                 goBack.background.setColorFilter(Color.parseColor("#FDF000"), PorterDuff.Mode.SRC_IN)
 
             } else {
                 chapterName.text = "ADDITION"
                 chapterName.setTextColor(Color.parseColor("#22B045"))
+                chapter.setTextColor(Color.parseColor("#22B045"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout)
                 goBack.background.setColorFilter(Color.parseColor("#B4E41D"), PorterDuff.Mode.SRC_IN
                 )

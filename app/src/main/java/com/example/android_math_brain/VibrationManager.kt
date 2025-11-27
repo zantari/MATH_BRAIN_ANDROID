@@ -50,15 +50,15 @@ object VibrationManager {
             )
 
             VibrationType.CORRECT -> Pair(
-
-                longArrayOf(0, 150),
-                intArrayOf(0, 80)
+                longArrayOf(0, 80),
+                intArrayOf(0, 60)
             )
+
             VibrationType.WRONG -> Pair(
-
-                longArrayOf(0, 200),
-                intArrayOf(0, 200)
+                longArrayOf(0, 500),
+                intArrayOf(0, 255)
             )
+
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

@@ -7,13 +7,13 @@
     android:background="#2596be"
     android:orientation="vertical">
 
-    <ImageView
+    <!-- Video zamiast obrazka -->
+    <VideoView
+        android:id="@+id/brainVideo"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:layout_marginTop="40dp"
-        android:id="@+id/brainImg"
-        android:src="@drawable/happybrain2"
-        />
+        android:layout_marginTop="40dp" />
+
 
     <ImageView
         android:layout_width="match_parent"

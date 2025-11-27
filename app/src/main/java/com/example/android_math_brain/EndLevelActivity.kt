@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.toColor
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.net.Uri
+import android.widget.VideoView
+
 
 class EndLevelActivity : AppCompatActivity() {
 
@@ -80,13 +83,14 @@ class EndLevelActivity : AppCompatActivity() {
 
 
 
-        brainImg = findViewById(R.id.brainImg)
+//        brainImg = findViewById(R.id.brainImg)
         textUnderBrain = findViewById(R.id.textUnderBrain)
         stars1 = findViewById(R.id.star1)
         scoreText = findViewById(R.id.scoreText)
         homeBtn = findViewById(R.id.homeBtn)
         tryAgainBtn = findViewById(R.id.tryAgainBtn)
         nextLevelBtn = findViewById(R.id.nextLevelBtn)
+        val brainVideo: VideoView = findViewById(R.id.brainVideo)
 
 
         if(procenty<0){
@@ -95,28 +99,40 @@ class EndLevelActivity : AppCompatActivity() {
         //ten if zeby na minus nie wypioerdalalo
 
         if (isWon && procenty in 32..55) {
-            brainImg.setImageResource(R.drawable.brainguybook)
             textUnderBrain.setImageResource(R.drawable.levelcleard)
             stars1.setImageResource(R.drawable.star1)
             scoreText.text = "Score: $procenty%"
         } else if(isWon && procenty in 51..75) {
-            brainImg.setImageResource(R.drawable.brainguy)
             textUnderBrain.setImageResource(R.drawable.levelcleard)
             stars1.setImageResource(R.drawable.star2)
             scoreText.text = "Score: $procenty%"
         } else if (isWon && procenty in 76..100) {
-            brainImg.setImageResource(R.drawable.happybrain2)
             textUnderBrain.setImageResource(R.drawable.levelcleard)
             stars1.setImageResource(R.drawable.stars3)
             scoreText.text = "Score: $procenty%"
         }else {
-            brainImg.setImageResource(R.drawable.brainguy)
             textUnderBrain.setImageResource(R.drawable.levelfailed)
             stars1.setImageResource(R.drawable.star0)
             scoreText.text = "Score: $procenty%"
         }
 
 
+//        dzialanie video
+        val videoResId = when {
+            isWon && procenty in 32..55 -> R.raw.happybrain
+            isWon && procenty in 51..75 -> R.raw.walkbrain
+            isWon && procenty in 76..100 -> R.raw.happybrain
+            else -> R.raw.walkbrain
+        }
+
+        val videoUri = Uri.parse("android.resource://${packageName}/$videoResId")
+        brainVideo.setVideoURI(videoUri)
+        brainVideo.setOnPreparedListener { mp ->
+            mp.isLooping = true
+            brainVideo.start()
+        }
+
+//koniec dzialania video
 
 
 
