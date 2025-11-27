@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
+import android.widget.ImageView
 
 class LevelActivity : AppCompatActivity() {
     private lateinit var gameData: GameData
@@ -24,6 +24,7 @@ class LevelActivity : AppCompatActivity() {
     private lateinit var excText: TextView;
 
     private lateinit var progressBar: SeekBar
+    private lateinit var btnReturn: ImageView
 
 //    PYTANIA
     private val lvl1 = listOf(
@@ -88,7 +89,7 @@ class LevelActivity : AppCompatActivity() {
         levelId = intent.getIntExtra("LEVEL_ID", -1)
 
         if(levelId == -1 || levelId > levelSequence.size){
-            Toast.makeText(this, "WE DONT HAVE THIS LEVEL YET", Toast.LENGTH_LONG).show()
+            showToast(this, "WE DONT HAVE THIS LEVEL YET")
             finish()
             return
         }
@@ -96,6 +97,7 @@ class LevelActivity : AppCompatActivity() {
          btn1 = findViewById<Button>(R.id.answer1)
          btn2 = findViewById<Button>(R.id.answer2)
          btn3 = findViewById<Button>(R.id.answer3)
+        btnReturn = findViewById(R.id.btnReturn)
 
          excText = findViewById<TextView>(R.id.excText)
         progressBar = findViewById(R.id.progressBar)
@@ -106,6 +108,16 @@ class LevelActivity : AppCompatActivity() {
         btn2.setOnClickListener { checkAnswer(1) }
         btn3.setOnClickListener { checkAnswer(2) }
         loadQuestion()
+
+        btnReturn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
+            Intent(this, AdventureActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
+
+        }
+
 
 
 
@@ -130,22 +142,25 @@ class LevelActivity : AppCompatActivity() {
     }
 
     private fun checkAnswer(selectedAnswerIndex: Int) {
+        VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
 
 
         val currentQuestion = currentLevelQuestion[currQuestionIndex]
 
         if (selectedAnswerIndex == currentQuestion.correctAnswerIndex) {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.CORRECT)
+            showToast(this, "correct answer!")
             currQuestionIndex++
             if (currQuestionIndex < currentLevelQuestion.size) {
                 loadQuestion()
             } else {
-                Toast.makeText(this, "YOU WON! with " + wrongAnswers +" wrong answers", Toast.LENGTH_SHORT).show()
+                showToast(this, "you ended up with " + wrongAnswers +" wrong answers")
 
 
 
                 val intent = Intent(this, EndLevelActivity::class.java)
                 val procenty = (currentLevelQuestion.size - wrongAnswers) * 100 / currentLevelQuestion.size
-                val isWon = procenty>33
+                val isWon = procenty>32
 
                 if(isWon){
                     if(levelId == gameData.getLevel()) {
@@ -171,8 +186,9 @@ class LevelActivity : AppCompatActivity() {
 
         }
         else{
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
             wrongAnswers++
-            Toast.makeText(this, "wrong answer correct is: "+ currentQuestion.answers[currentQuestion.correctAnswerIndex].toString() , Toast.LENGTH_LONG).show()
+            showToast(this, "wrong answer correct is: "+ currentQuestion.answers[currentQuestion.correctAnswerIndex].toString())
             currentLevelQuestion.removeAt(currQuestionIndex)
             currentLevelQuestion.add(currentQuestion)
             loadQuestion()

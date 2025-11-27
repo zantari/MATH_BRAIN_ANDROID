@@ -94,7 +94,7 @@ class EndLevelActivity : AppCompatActivity() {
         }
         //ten if zeby na minus nie wypioerdalalo
 
-        if (isWon && procenty in 33..55) {
+        if (isWon && procenty in 32..55) {
             brainImg.setImageResource(R.drawable.brainguybook)
             textUnderBrain.setImageResource(R.drawable.levelcleard)
             stars1.setImageResource(R.drawable.star1)
@@ -117,8 +117,7 @@ class EndLevelActivity : AppCompatActivity() {
         }
 
 
-        //scoreText.text = "masz " + procenty + "%, przeszedles? " + isWon.toString() + " poziom ktory robiles: "+ passedLevel.toString() + ", aktualny poziom teraz "+aktualnyPoziom.toString()
-        //wypisuje % i true/false poziom ktory sie przeszlo i poziom na ktorym jest uzytkownik wyjeb to i zrob po swojemu to tylko na testa
+
 
 
 
@@ -127,12 +126,15 @@ class EndLevelActivity : AppCompatActivity() {
 
         //onclicki zwykle chcesz to pozmieniaj, to jak sie wywoluje funkcje masz w 126linijce i co robia
         homeBtn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             backHome()
         }
         nextLevelBtn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             nextLvl()
         }
         tryAgainBtn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             tryAgain()
         }
 
@@ -168,6 +170,11 @@ class EndLevelActivity : AppCompatActivity() {
     }
 
     private fun nextLvl(){
+        if(GameData.getInstance(this).getLevel() == passedLevel){
+            showToast(this, "You didnt completed " + GameData.getInstance(this).getLevel() + " level")
+            backHome()
+            return
+        }
         Intent(this, LevelActivity::class.java).also {
             it.putExtra("LEVEL_ID", passedLevel+1)
             startActivity(it)

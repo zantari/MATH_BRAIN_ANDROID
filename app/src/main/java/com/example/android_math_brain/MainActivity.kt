@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
 
         advBtn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
 
             Intent(this, AdventureActivity::class.java).also {
                 startActivity(it)
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         rankBtn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
             lifecycleScope.launch {
                 rankBtn.text = "lvl = 0"
 
