@@ -40,6 +40,17 @@
         android:textStyle="bold" />
 
 
+    <TextView
+        android:id="@+id/isGoodText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:fontFamily="@font/baloo"
+
+        android:gravity="center"
+        android:text=""
+        android:textColor="#BA3030"
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,15 +114,15 @@
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="4"
+        android:max="7"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-
         android:clickable="false"
         android:focusable="false"
         android:focusableInTouchMode="false"  android:progressTint="#928CDB77"
-        android:thumb="@android:drawable/btn_star_big_on"
-        android:tickMark="@android:drawable/btn_star_big_off" />
+        android:thumb="@drawable/muzgtestowy"
+        android:tickMark="@drawable/muzgtestowybw"
+         />
 
 </LinearLayout>
