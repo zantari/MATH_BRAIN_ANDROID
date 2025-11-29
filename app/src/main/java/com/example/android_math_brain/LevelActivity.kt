@@ -15,6 +15,7 @@ import androidx.core.os.postDelayed
 import android.os.Handler
 import android.os.Looper
 import androidx.compose.ui.graphics.Color
+import android.media.SoundPool
 
 class LevelActivity : AppCompatActivity() {
     private lateinit var gameData: GameData
@@ -32,6 +33,10 @@ class LevelActivity : AppCompatActivity() {
 
     private lateinit var progressBar: SeekBar
     private lateinit var btnReturn: ImageView
+
+    private lateinit var soundPool: SoundPool
+    private var badSoundId: Int = 0
+    private var soundReady = false
 
     private val positiveText = listOf<String>(
         "Awesome!",
@@ -55,7 +60,7 @@ class LevelActivity : AppCompatActivity() {
         "A small miscalculation"
     )
 
-//    PYTANIA
+    //    PYTANIA
     private val lvl1 = listOf(
         Question("2 + 2 = ", listOf("3", "8", "4"),  2),
 
@@ -144,15 +149,15 @@ class LevelActivity : AppCompatActivity() {
             return
         }
 
-         btn1 = findViewById<Button>(R.id.answer1)
-         btn2 = findViewById<Button>(R.id.answer2)
-         btn3 = findViewById<Button>(R.id.answer3)
+        btn1 = findViewById<Button>(R.id.answer1)
+        btn2 = findViewById<Button>(R.id.answer2)
+        btn3 = findViewById<Button>(R.id.answer3)
 
         buttons = listOf(btn1, btn2, btn3)
         btnReturn = findViewById(R.id.btnReturn)
         isGoodText = findViewById(R.id.isGoodText)
 
-         excText = findViewById<TextView>(R.id.excText)
+        excText = findViewById<TextView>(R.id.excText)
         progressBar = findViewById(R.id.progressBar)
         progressBar.setOnTouchListener { v, event -> true }
         currentLevelQuestion = levelSequence[levelId-1].toMutableList()
@@ -170,6 +175,28 @@ class LevelActivity : AppCompatActivity() {
                 overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom)
             }
         }
+
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(1)
+            .setAudioAttributes(
+                android.media.AudioAttributes.Builder()
+                    .setUsage(android.media.AudioAttributes.USAGE_GAME)
+                    .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build()
+            ).build()
+
+        badSoundId = soundPool.load(this, R.raw.wronganswer3, 1)
+
+        soundPool.setOnLoadCompleteListener { _, sampleId, status ->
+            if (status == 0 && sampleId == badSoundId) {
+                // Odtwórz dźwięk na 0 głośności raz przy starcie, żeby cache’ować
+                val streamId = soundPool.play(badSoundId, 0f, 0f, 1, 0, 1f)
+                soundPool.stop(streamId)
+                soundReady = true
+            }
+        }
+
+
 
 
 
@@ -266,6 +293,13 @@ class LevelActivity : AppCompatActivity() {
 
         }
         else{
+            if (soundReady) {
+                Thread {
+                    soundPool.play(badSoundId, 1f, 1f, 1, 0, 1f)
+                }.start()
+            }
+
+
             VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
             wrongAnswers++
 
@@ -305,6 +339,11 @@ class LevelActivity : AppCompatActivity() {
             }, 1500)
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        soundPool.release()
     }
 
 
