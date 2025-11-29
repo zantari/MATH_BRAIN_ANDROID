@@ -25,7 +25,7 @@ class EndLevelActivity : AppCompatActivity() {
     private var isWon = false;
 
     private lateinit var brainImg: ImageView
-    private lateinit var textUnderBrain: ImageView
+    private lateinit var textUnderBrain: TextView
     private lateinit var stars1: ImageView
     private lateinit var scoreText: TextView
     private lateinit var homeBtn: Button
@@ -90,7 +90,7 @@ class EndLevelActivity : AppCompatActivity() {
         homeBtn = findViewById(R.id.homeBtn)
         tryAgainBtn = findViewById(R.id.tryAgainBtn)
         nextLevelBtn = findViewById(R.id.nextLevelBtn)
-        val brainVideo: VideoView = findViewById(R.id.brainVideo)
+        val brainWin = findViewById<ImageView>(R.id.brainWin)
 
 
         if(procenty<0){
@@ -99,38 +99,42 @@ class EndLevelActivity : AppCompatActivity() {
         //ten if zeby na minus nie wypioerdalalo
 
         if (isWon && procenty in 32..55) {
-            textUnderBrain.setImageResource(R.drawable.levelcleard)
+            textUnderBrain.text = "LEVEL CLEARD!"
+            brainWin.setImageResource(R.drawable.brainguybook)
             stars1.setImageResource(R.drawable.star1)
             scoreText.text = "Score: $procenty%"
         } else if(isWon && procenty in 51..75) {
-            textUnderBrain.setImageResource(R.drawable.levelcleard)
+            textUnderBrain.text = "LEVEL CLEARD!"
             stars1.setImageResource(R.drawable.star2)
+            brainWin.setImageResource(R.drawable.braindumbels)
             scoreText.text = "Score: $procenty%"
         } else if (isWon && procenty in 76..100) {
-            textUnderBrain.setImageResource(R.drawable.levelcleard)
+            textUnderBrain.text = "LEVEL CLEARD!"
             stars1.setImageResource(R.drawable.stars3)
+            brainWin.setImageResource(R.drawable.happybrain2)
             scoreText.text = "Score: $procenty%"
         }else {
-            textUnderBrain.setImageResource(R.drawable.levelfailed)
+            textUnderBrain.text = "LEVEL FAILED!"
             stars1.setImageResource(R.drawable.star0)
+            brainWin.setImageResource(R.drawable.sadbrain)
             scoreText.text = "Score: $procenty%"
         }
 
 
 //        dzialanie video
-        val videoResId = when {
-            isWon && procenty in 32..55 -> R.raw.happybrain
-            isWon && procenty in 51..75 -> R.raw.walkbrain
-            isWon && procenty in 76..100 -> R.raw.happybrain
-            else -> R.raw.walkbrain
-        }
-
-        val videoUri = Uri.parse("android.resource://${packageName}/$videoResId")
-        brainVideo.setVideoURI(videoUri)
-        brainVideo.setOnPreparedListener { mp ->
-            mp.isLooping = true
-            brainVideo.start()
-        }
+//        val videoResId = when {
+//            isWon && procenty in 32..55 -> R.raw.happybrain
+//            isWon && procenty in 51..75 -> R.drawable.brainguybook
+//            isWon && procenty in 76..100 -> R.drawable.happybrain2
+//            else -> R.raw.walkbrain
+//        }
+//
+//        val videoUri = Uri.parse("android.resource://${packageName}/$videoResId")
+//        brainVideo.setVideoURI(videoUri)
+//        brainVideo.setOnPreparedListener { mp ->
+//            mp.isLooping = true
+//            brainVideo.start()
+//        }
 
 //koniec dzialania video
 
@@ -143,15 +147,26 @@ class EndLevelActivity : AppCompatActivity() {
         //onclicki zwykle chcesz to pozmieniaj, to jak sie wywoluje funkcje masz w 126linijce i co robia
         homeBtn.setOnClickListener {
             VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
-            backHome()
+            val intent = Intent(this, AdventureActivity::class.java)
+            startActivity(intent)
+            finish()
+            overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom)
         }
         nextLevelBtn.setOnClickListener {
             VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
-            nextLvl()
+            val intent = Intent(this, LevelActivity::class.java)
+            intent.putExtra("LEVEL_ID", passedLevel+1)
+            startActivity(intent)
+            finish()
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
         tryAgainBtn.setOnClickListener {
             VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
-            tryAgain()
+            val intent = Intent(this, LevelActivity::class.java)
+            intent.putExtra("LEVEL_ID", passedLevel)
+            startActivity(intent)
+            finish()
+            overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top)
         }
 
 

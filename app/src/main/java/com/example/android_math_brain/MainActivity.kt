@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
         val rankBtn = findViewById<Button>(R.id.rankedBtn);
         val adventureScoreText = findViewById<TextView>(R.id.adventureScore);
 
-        adventureScoreText.text = "\uD83D\uDDFA\uFE0F: " + gameData.getLevel().toString()
+        adventureScoreText.text = "\uD83D\uDDFA\uFE0F" + "Current lvl: " + gameData.getLevel().toString()
+
 
 
 
@@ -47,6 +48,9 @@ class MainActivity : AppCompatActivity() {
 
             Intent(this, AdventureActivity::class.java).also {
                 startActivity(it)
+                finish()
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left) // lub top i bottom
+
             }
         }
 

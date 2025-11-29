@@ -4,24 +4,34 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2596be"
+    android:background="@drawable/backgroundnotes"
     android:orientation="vertical">
 
     <!-- Video zamiast obrazka -->
-    <VideoView
-        android:id="@+id/brainVideo"
+    <ImageView
+        android:id="@+id/brainWin"
+        android:src="@drawable/happybrain2"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:layout_marginTop="40dp" />
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
+    <TextView
         android:id="@+id/textUnderBrain"
-        android:src="@drawable/levelcleard"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:shadowColor="#1D1C1C"
+        android:shadowDx="15"
+        android:shadowDy="8"
+        android:shadowRadius="10"
+        android:text="LEVEL CLEARD!"
+        android:textColor="#E48E8C"
+        android:textSize="55sp" />
+
+
 
 
 
@@ -36,10 +46,15 @@
 
     <TextView
         android:id="@+id/scoreText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
         android:fontFamily="@font/baloo"
+        android:shadowColor="#713F05"
+        android:shadowDx="15"
+        android:shadowDy="8"
+        android:shadowRadius="10"
         android:text="Score: 100%"
         android:textColor="#F9C307"
         android:textSize="60sp"

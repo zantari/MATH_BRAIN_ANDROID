@@ -80,15 +80,19 @@ class AdventureActivity : AppCompatActivity() {
                 val intent = Intent(this, LevelActivity::class.java)
                 intent.putExtra("LEVEL_ID", clickedLevel)
                 startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top)
             }
             clickedLevel < currLvl -> {
                 VibrationManager.vibrate(this, VibrationManager.VibrationType.PASSED)
-                showToast(this, "You have already passed this level")
+
                 val intent = Intent(this, LevelActivity::class.java)
                 intent.putExtra("LEVEL_ID", clickedLevel)
                 startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top)
             }
         }
+
+
     }
 
     private lateinit var gameData: GameData // nie usuwaj
@@ -144,6 +148,7 @@ class AdventureActivity : AppCompatActivity() {
             }
             finish()
             VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
 
 
@@ -163,6 +168,7 @@ class AdventureActivity : AppCompatActivity() {
                 chapterName.setTextColor(Color.parseColor("#793679"))
                 chapter.setTextColor(Color.parseColor("#793679"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_sub)
+                goBack.setImageResource(R.drawable.leftarrowsub)
                 goBack.background.setColorFilter(Color.parseColor("#A249A3"), PorterDuff.Mode.SRC_IN)
 
             } else if (button21.getLocalVisibleRect(scrollBounds) || button25.getLocalVisibleRect(scrollBounds)) {
@@ -170,6 +176,7 @@ class AdventureActivity : AppCompatActivity() {
                 chapterName.setTextColor(Color.parseColor("#A30D14"))
                 chapter.setTextColor(Color.parseColor("#A30D14"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_mul)
+                goBack.setImageResource(R.drawable.leftarrowmul)
                 goBack.background.setColorFilter(Color.parseColor("#EB1C24"), PorterDuff.Mode.SRC_IN)
 
             } else if (button31.getLocalVisibleRect(scrollBounds) || button35.getLocalVisibleRect(scrollBounds)) {
@@ -177,6 +184,7 @@ class AdventureActivity : AppCompatActivity() {
                 chapterName.setTextColor(Color.parseColor("#C5BB00"))
                 chapter.setTextColor(Color.parseColor("#C5BB00"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout_div)
+                goBack.setImageResource(R.drawable.leftarrowdiv)
                 goBack.background.setColorFilter(Color.parseColor("#FDF000"), PorterDuff.Mode.SRC_IN)
 
             } else {
@@ -184,6 +192,7 @@ class AdventureActivity : AppCompatActivity() {
                 chapterName.setTextColor(Color.parseColor("#22B045"))
                 chapter.setTextColor(Color.parseColor("#22B045"))
                 topLayout.setBackgroundResource(R.drawable.rounded_layout)
+                goBack.setImageResource(R.drawable.leftarrowadd)
                 goBack.background.setColorFilter(Color.parseColor("#B4E41D"), PorterDuff.Mode.SRC_IN
                 )
             }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#2596be"
+    android:background="@drawable/backgroundnotes"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".LevelActivity">
@@ -26,7 +26,22 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        app:srcCompat="@drawable/mathbrainlogo" />
+        app:srcCompat="@drawable/brainguy" />
+
+    <TextView
+        android:id="@+id/brainGuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:shadowColor="#1A3D59"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="1"
+        android:text="MATH BRAIN"
+        android:textColor="#E48E8C"
+        android:textSize="60sp" />
 
     <TextView
         android:id="@+id/excText"
@@ -35,6 +50,10 @@
         android:fontFamily="@font/baloo"
         android:gravity="center"
         android:text="8+8 = ?"
+        android:shadowColor="#1D1C1C"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="1"
         android:textColor="#1a3d59"
         android:textSize="75sp"
         android:textStyle="bold" />
@@ -46,11 +65,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-30dp"
         android:fontFamily="@font/baloo"
-
         android:gravity="center"
         android:text=""
+        android:shadowColor="#1D1C1C"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="1"
         android:textColor="#BA3030"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,5 +146,16 @@
         android:thumb="@drawable/muzgtestowy"
         android:tickMark="@drawable/muzgtestowybw"
          />
+
+    <TextView
+        android:id="@+id/correctAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text=""
+        android:textColor="#3FD054"
+        android:fontFamily="@font/baloo"
+        android:textSize="45dp"
+        android:gravity="center"
+        />
 
 </LinearLayout>

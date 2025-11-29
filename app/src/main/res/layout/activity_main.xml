@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="#2596be"
+    android:background="@drawable/backgroundnotes"
     android:orientation="vertical"
     tools:context=".MainActivity"
     >
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="🏆: 0"
+        android:text="🏆Highest score: 0"
         android:textSize="35sp"
         android:textColor="#1a3d59"
         android:textStyle="bold"
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="🗺️: 0"
+        android:text="🗺️Current level: 0"
         android:fontFamily="@font/baloo"
         android:textSize="35sp"
         android:textColor="#1a3d59"

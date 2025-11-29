@@ -24,6 +24,7 @@ class LevelActivity : AppCompatActivity() {
     private lateinit var currentLevelQuestion: MutableList<Question>
 
     private lateinit var isGoodText: TextView
+    private lateinit var correctAnswer: TextView
     private lateinit var btn1: Button;
     private lateinit var btn2: Button;
     private lateinit var btn3: Button
@@ -166,9 +167,10 @@ class LevelActivity : AppCompatActivity() {
             Intent(this, AdventureActivity::class.java).also {
                 startActivity(it)
                 finish()
+                overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom)
             }
-
         }
+
 
 
 
@@ -228,34 +230,33 @@ class LevelActivity : AppCompatActivity() {
 
 
 
-            if (currQuestionIndex < currentLevelQuestion.size) {
-                loadQuestion()
-            } else {
-                showToast(this, "you ended up with " + wrongAnswers +" wrong answers")
+                if (currQuestionIndex < currentLevelQuestion.size) {
+                    loadQuestion()
+                } else {
+                    showToast(this, "you ended up with " + wrongAnswers +" wrong answers")
 
+                    val intent = Intent(this, EndLevelActivity::class.java)
+                    val procenty = (currentLevelQuestion.size - wrongAnswers) * 100 / currentLevelQuestion.size
+                    val isWon = procenty > 32
 
-
-                val intent = Intent(this, EndLevelActivity::class.java)
-                val procenty = (currentLevelQuestion.size - wrongAnswers) * 100 / currentLevelQuestion.size
-                val isWon = procenty>32
-
-                if(isWon){
-                    if(levelId == gameData.getLevel()) {
-                        gameData.addLevel()
+                    if(isWon){
+                        if(levelId == gameData.getLevel()) {
+                            gameData.addLevel()
+                        }
                     }
+
+                    intent.putExtra("all_answers", currentLevelQuestion.size.toInt())
+                    intent.putExtra("passed_level", levelId)
+                    intent.putExtra("wrong_answers", wrongAnswers)
+                    intent.putExtra("procenty", procenty)
+                    intent.putExtra("isWon", isWon)
+
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom)
+
+                    finish()
                 }
 
-                intent.putExtra("all_answers", currentLevelQuestion.size.toInt())
-                intent.putExtra("passed_level", levelId)
-                intent.putExtra("wrong_answers", wrongAnswers)
-                intent.putExtra("procenty", procenty)
-                intent.putExtra("isWon", isWon)
-
-                startActivity(intent)
-                finish()
-
-
-            }
                 isGoodText.text = ""
             }, 1000)
 
