@@ -14,7 +14,7 @@
 
 
     <ImageButton
-        android:id="@+id/button"
+        android:id="@+id/btnSettingsMain"
 
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="🏆Highest score: 0"
+        android:text="🏆: 0"
         android:textSize="35sp"
         android:textColor="#1a3d59"
         android:textStyle="bold"

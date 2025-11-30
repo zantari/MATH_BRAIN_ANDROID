@@ -105,7 +105,7 @@ class LevelActivity : AppCompatActivity() {
 
     private lateinit var buttons: List<Button>
 
-
+    private lateinit var currLevel: TextView
 
 
 
@@ -143,11 +143,14 @@ class LevelActivity : AppCompatActivity() {
         //test
         levelId = intent.getIntExtra("LEVEL_ID", -1)
 
+
         if(levelId == -1 || levelId > levelSequence.size){
             showToast(this, "WE DONT HAVE THIS LEVEL YET SORRY!")
             finish()
             return
         }
+        currLevel = findViewById(R.id.currLvl)
+        currLevel.text  = "level: " + levelId;
 
         btn1 = findViewById<Button>(R.id.answer1)
         btn2 = findViewById<Button>(R.id.answer2)

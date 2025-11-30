@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/backgroundnotes"
+
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".LevelActivity">
@@ -20,7 +21,7 @@
         android:gravity="center_vertical">
 
         <ImageButton
-            android:id="@+id/btnReturn"
+            android:id="@+id/btnReturnRank"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:background="@drawable/button_circle_background"
@@ -38,10 +39,10 @@
             />
 
         <TextView
-            android:id="@+id/currLvl"
+            android:id="@+id/currentStage"
             android:layout_height="match_parent"
             android:layout_width="0dp"  android:layout_weight="1"   android:fontFamily="@font/baloo"
-            android:gravity="center"    android:text="level: "
+            android:gravity="center"    android:text="RANKED"
             android:shadowColor="#1D1C1C"
             android:shadowDx="5"
             android:shadowDy="5"
@@ -96,7 +97,7 @@
         android:textSize="60sp" />
 
     <TextView
-        android:id="@+id/excText"
+        android:id="@+id/excTextRanked"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo"
@@ -107,8 +108,8 @@
         android:shadowDy="5"
         android:shadowRadius="1"
         android:textColor="#1a3d59"
-        android:textSize="75sp"
-        android:textStyle="bold" />
+        android:textSize="75sp"              android:textStyle="bold"
+        android:maxLines="1"                  android:autoSizeTextType="uniform"    android:autoSizeMinTextSize="12sp"    android:autoSizeMaxTextSize="75sp" />
 
 
     <TextView
@@ -134,7 +135,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/answer1"
+            android:id="@+id/answer1ranked"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_marginLeft="20dp"
@@ -149,7 +150,7 @@
             android:elevation="20dp"
             android:stateListAnimator="@null" />
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/answer2"
+            android:id="@+id/answer2ranked"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_marginLeft="5dp"
@@ -165,7 +166,7 @@
             android:stateListAnimator="@null" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/answer3"
+            android:id="@+id/answer3ranked"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:layout_marginLeft="5dp"
@@ -184,20 +185,29 @@
 
     </LinearLayout>
 
-    <SeekBar
+
+
+    <ProgressBar
         android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="7"
-        android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
-        android:clickable="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"  android:progressTint="#928CDB77"
-        android:thumb="@drawable/muzgtestowy"
-        android:tickMark="@drawable/muzgtestowybw"
-         />
+
+        android:indeterminate="false"
+
+        android:max="7"
+        android:progress="5"
+
+        android:minHeight="20dp"
+
+        android:progressDrawable="@drawable/custom_progress_bar"
+
+        tools:progress="5"
+        tools:max="7" />
 
     <TextView
         android:id="@+id/correctAnswer"
