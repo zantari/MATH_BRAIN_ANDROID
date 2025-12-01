@@ -93,6 +93,8 @@ class AdventureActivity : AppCompatActivity() {
         }
 
 
+
+
     }
 
     private lateinit var gameData: GameData // nie usuwaj
@@ -136,6 +138,60 @@ class AdventureActivity : AppCompatActivity() {
         buttons.forEach { button ->
             button.setOnClickListener(::handleLevelClick)
         }
+
+        //kolory gdy lvl jest odblokowany lub zablkoowany
+
+        val currLvl = gameData.getLevel()
+
+        buttons.forEachIndexed { index, button ->
+            val levelNumber = index + 1
+            button.setOnClickListener(::handleLevelClick)
+
+            if (levelNumber > currLvl) {
+                when (levelNumber) {
+                    in 1..10 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_add_blocked)
+                        button.setTextColor(Color.parseColor("#5F8968"))
+                    }
+                    in 11..20 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_sub_blocked)
+                        button.setTextColor(Color.parseColor("#6b586b"))
+                    }
+                    in 21..30 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_mul_blocked)
+                        button.setTextColor(Color.parseColor("#8B5153"))
+                    }
+                    in 31..40 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_div_blocked)
+                        button.setTextColor(Color.parseColor("#8C8C63"))
+                    }
+                }
+            } else {
+                // ODBLOKOWANY LEVEL - analogicznie jak w when
+                when (levelNumber) {
+                    in 1..10 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_add)
+                        button.setTextColor(Color.parseColor("#22B045"))
+                    }
+                    in 11..20 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_sub)
+                        button.setTextColor(Color.parseColor("#793679"))
+                    }
+                    in 21..30 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_mul)
+                        button.setTextColor(Color.parseColor("#A30D14"))
+                    }
+                    in 31..40 -> {
+                        button.setBackgroundResource(R.drawable.button_shadow_div)
+                        button.setTextColor(Color.parseColor("#C5BB00"))
+                    }
+                }
+                button.isEnabled = true
+            }
+        }
+
+
+
 
         val chapterName = findViewById<TextView>(R.id.chapterName)
         val chapter = findViewById<TextView>(R.id.chapter)

@@ -101,6 +101,62 @@ class LevelActivity : AppCompatActivity() {
 
     )
 
+    private val lvl4 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+    )
+    private val lvl5 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+    private val lvl6 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+    private val lvl7 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+    private val lvl8 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+    private val lvl9 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+    private val lvl10 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+    private val lvl11 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+
+    private val lvl12 = listOf(
+        Question("12 + 8 = ", listOf("12", "26", "20"),  2),
+
+        Question("13 + 5 = ", listOf("18", "19", "21"),  0),
+
+        )
+
 
 
     private lateinit var buttons: List<Button>
@@ -124,7 +180,7 @@ class LevelActivity : AppCompatActivity() {
 
 
 
-    private val levelSequence = listOf(lvl1, lvl2, lvl3) //JAK DODASZ POZIOM PRIVATE VAL LVL.. TO DODAJ GO TU!!!
+    private val levelSequence = listOf(lvl1, lvl2, lvl3, lvl4, lvl5, lvl6, lvl7, lvl8, lvl9, lvl10, lvl11, lvl12) //JAK DODASZ POZIOM PRIVATE VAL LVL.. TO DODAJ GO TU!!!
 
 
     @SuppressLint("MissingInflatedId")
