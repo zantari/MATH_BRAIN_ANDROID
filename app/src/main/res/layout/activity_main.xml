@@ -30,8 +30,23 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="370dp"
-        app:srcCompat="@drawable/mathbrainlogo" />
+        android:layout_height="220dp"
+        app:srcCompat="@drawable/brainguy" />
+
+    <TextView
+        android:id="@+id/brainGuy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:shadowColor="#1A3D59"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="1"
+        android:text="MATH BRAIN"
+        android:textColor="#E48E8C"
+        android:textSize="60sp" />
 <!--aa-->
     <TextView
         android:id="@+id/rankedScore"
