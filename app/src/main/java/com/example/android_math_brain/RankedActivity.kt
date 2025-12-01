@@ -41,6 +41,8 @@ class RankedActivity : AppCompatActivity() {
     private var isThird = false
 
 
+    private var wrongAnswers = 3
+
 
     private lateinit var isGoodText: TextView
     private var countDownTimer: CountDownTimer? = null
@@ -145,6 +147,8 @@ class RankedActivity : AppCompatActivity() {
 
 
 
+
+
         if(selectedAnswerIndex == correctAnswerIndex){
             VibrationManager.vibrate(this, VibrationManager.VibrationType.CORRECT)
             val randomMessage = positiveText.random()
@@ -181,7 +185,13 @@ class RankedActivity : AppCompatActivity() {
 
 
         else{
+            wrongAnswers--
             VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
+
+            showToast(this, "YOU HAVE " + (wrongAnswers).toString() + " WRONG ANSWERS LEFT")
+
+
+
             isGoodText.setTextColor(android.graphics.Color.parseColor("#BA3030")) //ZMIENIAM KOLOR NA NIEPOPRAWNY
             excText.setTextColor(android.graphics.Color.parseColor("#BA3030")) //ZMIENIAM KOLOR NA NIEOPRAWNY
             currQuestion--
@@ -197,17 +207,21 @@ class RankedActivity : AppCompatActivity() {
 
 
             Handler(Looper.getMainLooper()).postDelayed({
-                buttons.forEach{
-                    it.setBackgroundColor(android.graphics.Color.parseColor("#99c1f1"))
+                if(wrongAnswers <=0){
+                    handleTimeout(isGameOver = true)
                 }
-                buttons.forEach{
-                    it.isClickable = true
+                else {
+                    buttons.forEach {
+                        it.setBackgroundColor(android.graphics.Color.parseColor("#99c1f1"))
+                    }
+                    buttons.forEach {
+                        it.isClickable = true
+                    }
+                    excText.setTextColor(android.graphics.Color.parseColor("#1a3d59"))
+                    isGoodText.text = ""
+                    generateQuestion()
+
                 }
-                excText.setTextColor(android.graphics.Color.parseColor("#1a3d59"))
-                isGoodText.text = ""
-                generateQuestion()
-
-
             }, 1500)
 
         }
@@ -379,7 +393,7 @@ class RankedActivity : AppCompatActivity() {
     }
 
 
-    private fun handleTimeout() {
+    private fun handleTimeout(isGameOver: Boolean = false) {
         VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
 
         isGoodText.setTextColor(android.graphics.Color.parseColor("#BA3030"))
@@ -392,7 +406,7 @@ class RankedActivity : AppCompatActivity() {
         }
 
         excText.text = tresc + wynik.toString()
-        isGoodText.text = "Time's Up!"
+
 
 
 
@@ -415,7 +429,11 @@ class RankedActivity : AppCompatActivity() {
 
 
         GameData.getInstance(this).addPoints(points)
-        isGoodText.text = "Time's Up! You got: $points points"
+        if (isGameOver || wrongAnswers <= 0) {
+            isGoodText.text = "You lost and got: $points points"
+        } else {
+            isGoodText.text = "Time's Up! You got: $points points"
+        }
 
 
         Handler(Looper.getMainLooper()).postDelayed({
