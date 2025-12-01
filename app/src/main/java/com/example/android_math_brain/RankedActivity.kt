@@ -217,7 +217,7 @@ class RankedActivity : AppCompatActivity() {
 
     }
     private fun generateQuestion(){
-        if(currQuestion<2) {
+        if(currQuestion<4) {
             firstNumber = (1..10).random()
             secondNumber = (1..10).random()
         }
@@ -231,20 +231,9 @@ class RankedActivity : AppCompatActivity() {
 
 
         }
+        lolixFun()
 
-        if(currQuestion <=3){
-            time = 7;
-            generowanieTresci()
 
-        }
-        else if(currQuestion>3 && currQuestion<=7){
-            time = 5;
-            generowanieTresci()
-        }
-        else{
-            time = 2
-            generowanieTresci()
-        }
          prawidlowaOdp = (0..2).random()
         correctAnswerIndex = prawidlowaOdp
         btn1.text =
@@ -298,7 +287,7 @@ class RankedActivity : AppCompatActivity() {
 
 
 
-        startTimer(time)
+
     }
 
 
@@ -405,6 +394,11 @@ class RankedActivity : AppCompatActivity() {
         excText.text = tresc + wynik.toString()
         isGoodText.text = "Time's Up!"
 
+
+
+
+        //TUTAJ MASZ PUNKTACJE
+
         points = when {
             currQuestion<4 -> -10
             currQuestion<8 -> -7
@@ -414,6 +408,12 @@ class RankedActivity : AppCompatActivity() {
             currQuestion<25 -> 20
             else -> 40
         }
+
+        // PUNKTACJA
+
+
+
+
         GameData.getInstance(this).addPoints(points)
         isGoodText.text = "Time's Up! You got: $points points"
 
@@ -441,6 +441,39 @@ class RankedActivity : AppCompatActivity() {
 
         }, 5000)
 
+    }
+
+    private fun lolixFun(){
+
+        if(currQuestion <=5){
+            time = 7;
+            generowanieTresci()
+
+        }
+        else if(currQuestion<=15){
+            time = 6;
+            generowanieTresci()
+        }
+        else if(currQuestion <=25){
+            time = 5
+            generowanieTresci()
+        }
+        else if(currQuestion <=35) {
+            time = 4
+            generowanieTresci()
+        }
+        else if(currQuestion <=45) {
+            time = 3
+            generowanieTresci()
+        }
+
+        else{
+            time = 2
+            generowanieTresci()
+        }
+
+
+        startTimer(time)
     }
 
     private fun startTimer(seconds: Int) {
