@@ -72,18 +72,18 @@ class AdventureActivity : AppCompatActivity() {
 
         when {
             clickedLevel > currLvl -> {
-                VibrationManager.vibrate(this, VibrationManager.VibrationType.LOCKED)
+                VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
                 showToast(this, "Your current level is $currLvl, try to pass it!")
             }
             clickedLevel == currLvl -> {
-                VibrationManager.vibrate(this, VibrationManager.VibrationType.CURRENT)
+                VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
                 val intent = Intent(this, LevelActivity::class.java)
                 intent.putExtra("LEVEL_ID", clickedLevel)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_top)
             }
             clickedLevel < currLvl -> {
-                VibrationManager.vibrate(this, VibrationManager.VibrationType.PASSED)
+                VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
 
                 val intent = Intent(this, LevelActivity::class.java)
                 intent.putExtra("LEVEL_ID", clickedLevel)

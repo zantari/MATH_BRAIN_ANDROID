@@ -48,6 +48,7 @@ dependencies {
     // do gifow
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.media3.common.ktx)
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
     testImplementation(libs.junit)

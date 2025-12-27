@@ -1,11 +1,17 @@
 package com.example.android_math_brain
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
+import android.view.Window
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -48,6 +54,7 @@ class RankedActivity : AppCompatActivity() {
     private lateinit var btnReturn: ImageView
     private lateinit var buttons: List<Button>
     private lateinit var stage : TextView
+    private lateinit var hearts: List<ImageView>
 
     private val positiveText = listOf<String>(
         "Awesome!", "Excellent!", "Great job!", "Perfect!", "You got it!",
@@ -71,6 +78,16 @@ class RankedActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val settingsBtn = findViewById<ImageButton>(R.id.btnSettings)
+        settingsBtn.setOnClickListener {
+            showSettingsPopup()
+        }
+
+        hearts = listOf(
+            findViewById(R.id.heart1),
+            findViewById(R.id.heart2),
+            findViewById(R.id.heart3)
+        )
 
         soundPool = SoundPool.Builder()
             .setMaxStreams(2)
@@ -107,7 +124,65 @@ class RankedActivity : AppCompatActivity() {
         isGoodText = findViewById(R.id.isGoodText)
         progressBar = findViewById(R.id.progressBar)
 
+        updateHearts()
         generateQuestion()
+    }
+
+    private fun updateHearts() {
+        for (i in hearts.indices) {
+            hearts[i].visibility = if (i < wrongAnswers) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun showSettingsPopup() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.popup_settings)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val btnSound = dialog.findViewById<Button>(R.id.btnSound)
+        val btnVibrations = dialog.findViewById<Button>(R.id.btnVibrations)
+        val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
+
+        fun updateSoundButton() {
+            if (VibrationManager.isMusicEnabled()) {
+                btnSound.text = "Music: ON"
+                btnSound.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3FD054"))
+            } else {
+                btnSound.text = "Music: OFF"
+                btnSound.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#BA3030"))
+            }
+        }
+
+        fun updateVibrationButton() {
+            if (VibrationManager.isVibrationEnabled()) {
+                btnVibrations.text = "Vibrations: ON"
+                btnVibrations.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3FD054"))
+            } else {
+                btnVibrations.text = "Vibrations: OFF"
+                btnVibrations.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#BA3030"))
+            }
+        }
+
+        updateSoundButton()
+        updateVibrationButton()
+
+        btnClose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnSound.setOnClickListener {
+            VibrationManager.setMusicEnabled(this, !VibrationManager.isMusicEnabled())
+            updateSoundButton()
+        }
+
+        btnVibrations.setOnClickListener {
+            VibrationManager.setVibrationEnabled(!VibrationManager.isVibrationEnabled())
+            updateVibrationButton()
+        }
+
+        dialog.show()
     }
 
     override fun onPause() {
@@ -164,8 +239,8 @@ class RankedActivity : AppCompatActivity() {
             if (soundReady) soundPool.play(badSoundId, 1f, 1f, 1, 0, 1f)
 
             wrongAnswers--
+            updateHearts()
             VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
-            showToast(this, "YOU HAVE " + (wrongAnswers).toString() + " WRONG ANSWERS LEFT")
 
             isGoodText.setTextColor(android.graphics.Color.parseColor("#BA3030"))
             excText.setTextColor(android.graphics.Color.parseColor("#BA3030"))

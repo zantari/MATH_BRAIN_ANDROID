@@ -1,7 +1,11 @@
 package com.example.android_math_brain
 
+import android.app.Dialog
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -9,9 +13,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
 import androidx.lifecycle.ProcessLifecycleOwner
 
 class MainActivity : AppCompatActivity() {
@@ -23,9 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver(this))
 
-
-        val musicIntent = Intent(this, MusicService::class.java)
-        startService(musicIntent)
+        if (VibrationManager.isMusicEnabled()) {
+            val musicIntent = Intent(this, MusicService::class.java)
+            startService(musicIntent)
+        }
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,12 +49,7 @@ class MainActivity : AppCompatActivity() {
         rankedScoreText.text = "\uD83C\uDFC6: " + gameData.getPoints().toString()
 
         settingsBtn.setOnClickListener {
-            lifecycleScope.launch {
-                adventureScoreText.text = "lvl = 0"
-                gameData.setLevel(1)
-                delay(500)
-                updateUI()
-            }
+            showSettingsPopup()
         }
 
         advBtn.setOnClickListener {
@@ -73,6 +70,57 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun showSettingsPopup() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.popup_settings)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val btnSound = dialog.findViewById<Button>(R.id.btnSound)
+        val btnVibrations = dialog.findViewById<Button>(R.id.btnVibrations)
+        val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
+
+        fun updateSoundButton() {
+            if (VibrationManager.isMusicEnabled()) {
+                btnSound.text = "Music: ON"
+                btnSound.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3FD054"))
+            } else {
+                btnSound.text = "Music: OFF"
+                btnSound.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#BA3030"))
+            }
+        }
+
+        fun updateVibrationButton() {
+            if (VibrationManager.isVibrationEnabled()) {
+                btnVibrations.text = "Vibrations: ON"
+                btnVibrations.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3FD054"))
+            } else {
+                btnVibrations.text = "Vibrations: OFF"
+                btnVibrations.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#BA3030"))
+            }
+        }
+
+        updateSoundButton()
+        updateVibrationButton()
+
+        btnClose.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnSound.setOnClickListener {
+            VibrationManager.setMusicEnabled(this, !VibrationManager.isMusicEnabled())
+            updateSoundButton()
+        }
+
+        btnVibrations.setOnClickListener {
+            VibrationManager.setVibrationEnabled(!VibrationManager.isVibrationEnabled())
+            updateVibrationButton()
+        }
+
+        dialog.show()
+    }
+
     private fun updateUI() {
         val adventureScoreText = findViewById<TextView>(R.id.adventureScore)
         adventureScoreText.text = "\uD83D\uDDFA\uFE0F: " + gameData.getLevel().toString()
@@ -80,6 +128,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (!VibrationManager.isMusicEnabled()) {
+            stopService(Intent(this, MusicService::class.java))
+        }
         updateUI()
     }
 }
