@@ -98,7 +98,7 @@ i
     <TextView
         android:id="@+id/excText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:fontFamily="@font/baloo"
         android:gravity="center"
         android:text="8+8 = ?"
@@ -107,8 +107,12 @@ i
         android:shadowDy="5"
         android:shadowRadius="1"
         android:textColor="#1a3d59"
-        android:textSize="75sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:maxLines="1"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeMaxTextSize="75sp"
+        app:autoSizeStepGranularity="1sp" />
 
 
     <TextView

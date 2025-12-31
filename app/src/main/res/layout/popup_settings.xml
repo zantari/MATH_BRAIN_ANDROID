@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="320dp"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp"
     android:background="@drawable/rounded_popup_background">
@@ -51,5 +51,17 @@
         android:backgroundTint="#99c1f1"
         android:textColor="#1a3d59"
         android:fontFamily="@font/baloo"/>
+
+    <Button
+        android:id="@+id/btnResetRanking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#BA3030"
+        android:fontFamily="@font/baloo"
+        android:text="Reset level"
+        android:textColor="#1a3d59"
+        android:textSize="24sp" />
 
 </LinearLayout>

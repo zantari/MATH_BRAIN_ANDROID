@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
@@ -41,14 +42,12 @@ class MainActivity : AppCompatActivity() {
 
         val advBtn = findViewById<Button>(R.id.adventureBtn)
         val rankBtn = findViewById<Button>(R.id.rankedBtn)
-        val adventureScoreText = findViewById<TextView>(R.id.adventureScore)
-        val rankedScoreText = findViewById<TextView>(R.id.rankedScore)
         val settingsBtn = findViewById<ImageButton>(R.id.btnSettingsMain)
 
-        adventureScoreText.text = "\uD83D\uDDFA\uFE0F" + "Current lvl: " + gameData.getLevel().toString()
-        rankedScoreText.text = "\uD83C\uDFC6: " + gameData.getPoints().toString()
+        updateUI()
 
         settingsBtn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             showSettingsPopup()
         }
 
@@ -81,6 +80,9 @@ class MainActivity : AppCompatActivity() {
         val btnVibrations = dialog.findViewById<Button>(R.id.btnVibrations)
         val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
 
+        val btnResetRanking = dialog.findViewById<Button>(R.id.btnResetRanking)
+        btnResetRanking.visibility = View.VISIBLE
+
         fun updateSoundButton() {
             if (VibrationManager.isMusicEnabled()) {
                 btnSound.text = "Music: ON"
@@ -105,17 +107,27 @@ class MainActivity : AppCompatActivity() {
         updateVibrationButton()
 
         btnClose.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             dialog.dismiss()
         }
 
         btnSound.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             VibrationManager.setMusicEnabled(this, !VibrationManager.isMusicEnabled())
             updateSoundButton()
         }
 
         btnVibrations.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             VibrationManager.setVibrationEnabled(!VibrationManager.isVibrationEnabled())
             updateVibrationButton()
+        }
+
+        btnResetRanking.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
+            gameData.setLevel(1)
+            updateUI()
+            dialog.dismiss()
         }
 
         dialog.show()
@@ -123,7 +135,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI() {
         val adventureScoreText = findViewById<TextView>(R.id.adventureScore)
-        adventureScoreText.text = "\uD83D\uDDFA\uFE0F: " + gameData.getLevel().toString()
+        val rankedScoreText = findViewById<TextView>(R.id.rankedScore)
+        adventureScoreText.text = "\uD83D\uDDFA\uFE0F" + ": " + gameData.getLevel().toString()
+        rankedScoreText.text = "\uD83C\uDFC6: " + gameData.getPoints().toString()
     }
 
     override fun onResume() {

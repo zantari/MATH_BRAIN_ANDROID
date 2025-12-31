@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.media.SoundPool
+import android.view.View
 
 class LevelActivity : AppCompatActivity() {
     private lateinit var gameData: GameData
@@ -399,6 +400,7 @@ class LevelActivity : AppCompatActivity() {
         val btnSound = dialog.findViewById<Button>(R.id.btnSound)
         val btnVibrations = dialog.findViewById<Button>(R.id.btnVibrations)
         val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
+        dialog.findViewById<Button>(R.id.btnResetRanking).visibility = View.GONE
 
         fun updateSoundButton() {
             if (VibrationManager.isMusicEnabled()) {

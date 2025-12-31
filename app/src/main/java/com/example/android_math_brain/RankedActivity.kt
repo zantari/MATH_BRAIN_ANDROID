@@ -80,6 +80,7 @@ class RankedActivity : AppCompatActivity() {
         }
         val settingsBtn = findViewById<ImageButton>(R.id.btnSettings)
         settingsBtn.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             showSettingsPopup()
         }
 
@@ -140,6 +141,7 @@ class RankedActivity : AppCompatActivity() {
         dialog.setCancelable(true)
         dialog.setContentView(R.layout.popup_settings)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.findViewById<Button>(R.id.btnResetRanking).visibility = View.GONE
 
         val btnSound = dialog.findViewById<Button>(R.id.btnSound)
         val btnVibrations = dialog.findViewById<Button>(R.id.btnVibrations)
@@ -169,15 +171,18 @@ class RankedActivity : AppCompatActivity() {
         updateVibrationButton()
 
         btnClose.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             dialog.dismiss()
         }
 
         btnSound.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             VibrationManager.setMusicEnabled(this, !VibrationManager.isMusicEnabled())
             updateSoundButton()
         }
 
         btnVibrations.setOnClickListener {
+            VibrationManager.vibrate(this, VibrationManager.VibrationType.BUTTON_CLICK)
             VibrationManager.setVibrationEnabled(!VibrationManager.isVibrationEnabled())
             updateVibrationButton()
         }
@@ -209,26 +214,25 @@ class RankedActivity : AppCompatActivity() {
     private fun checkAnswer(selectedAnswerIndex: Int){
         countDownTimer?.cancel()
 
-
         if(selectedAnswerIndex == correctAnswerIndex){
             if (soundReady) soundPool.play(goodSoundId, 1f, 1f, 1, 0, 1f)
 
             VibrationManager.vibrate(this, VibrationManager.VibrationType.CORRECT)
             val randomMessage = positiveText.random()
             isGoodText.text = randomMessage
-            isGoodText.setTextColor(android.graphics.Color.parseColor("#3FD054"))
-            excText.setTextColor(android.graphics.Color.parseColor("#3FD054"))
-            buttons[selectedAnswerIndex].setBackgroundColor(android.graphics.Color.parseColor("#3FD054"))
+            isGoodText.setTextColor(Color.parseColor("#3FD054"))
+            excText.setTextColor(Color.parseColor("#3FD054"))
+            buttons[selectedAnswerIndex].setBackgroundColor(Color.parseColor("#3FD054"))
             buttons.forEach{
                 it.isClickable = false
             }
             excText.text = tresc + wynik.toString();
 
             Handler(Looper.getMainLooper()).postDelayed({
-                excText.setTextColor(android.graphics.Color.parseColor("#1a3d59"))
+                excText.setTextColor(Color.parseColor("#1a3d59"))
                 buttons.forEach{
                     it.isClickable = true
-                    it.setBackgroundColor(android.graphics.Color.parseColor("#99c1f1"))
+                    it.setBackgroundColor(Color.parseColor("#99c1f1"))
                 }
                 isGoodText.text = ""
                 currQuestion++
@@ -236,19 +240,20 @@ class RankedActivity : AppCompatActivity() {
                 generateQuestion()
             }, 1000)
         } else {
+            // Wrong answer logic
             if (soundReady) soundPool.play(badSoundId, 1f, 1f, 1, 0, 1f)
 
             wrongAnswers--
             updateHearts()
             VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
 
-            isGoodText.setTextColor(android.graphics.Color.parseColor("#BA3030"))
-            excText.setTextColor(android.graphics.Color.parseColor("#BA3030"))
-            currQuestion--
+            isGoodText.setTextColor(Color.parseColor("#BA3030"))
+            excText.setTextColor(Color.parseColor("#BA3030"))
+
             stage.text = "Stage: " + currQuestion.toString()
 
-            buttons[prawidlowaOdp].setBackgroundColor(android.graphics.Color.parseColor("#3FD054"))
-            buttons[selectedAnswerIndex].setBackgroundColor(android.graphics.Color.parseColor("#BA3030"))
+            buttons[prawidlowaOdp].setBackgroundColor(Color.parseColor("#3FD054"))
+            buttons[selectedAnswerIndex].setBackgroundColor(Color.parseColor("#BA3030"))
             buttons.forEach{
                 it.isClickable = false
             }
@@ -257,18 +262,77 @@ class RankedActivity : AppCompatActivity() {
 
             Handler(Looper.getMainLooper()).postDelayed({
                 if(wrongAnswers <=0){
-                    handleTimeout(isGameOver = true)
+                    gameOver("You lost!")
                 } else {
+                    // Reset for next question
                     buttons.forEach {
-                        it.setBackgroundColor(android.graphics.Color.parseColor("#99c1f1"))
+                        it.setBackgroundColor(Color.parseColor("#99c1f1"))
                         it.isClickable = true
                     }
-                    excText.setTextColor(android.graphics.Color.parseColor("#1a3d59"))
+                    excText.setTextColor(Color.parseColor("#1a3d59"))
                     isGoodText.text = ""
                     generateQuestion()
                 }
             }, 1500)
         }
+    }
+
+    private fun gameOver(message: String) {
+        points = when {
+            currQuestion < 4 -> -10
+            currQuestion < 8 -> -7
+            currQuestion < 10 -> 0
+            currQuestion < 15 -> 5
+            currQuestion < 20 -> 10
+            currQuestion < 25 -> 20
+            else -> 40
+        }
+        GameData.getInstance(this).addPoints(points)
+        isGoodText.text = "$message You got: $points points"
+
+        buttons.forEach{
+            it.isClickable = false
+        }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            Intent(this, MainActivity::class.java).also {
+                it.putExtra("points", points)
+                startActivity(it)
+                finish()
+            }
+        }, 3000)
+    }
+
+    private fun handleTimeout() {
+        if (soundReady) soundPool.play(badSoundId, 1f, 1f, 1, 0, 1f)
+        VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
+
+        wrongAnswers--
+        updateHearts()
+
+        isGoodText.text = "Time's up!"
+        isGoodText.setTextColor(Color.parseColor("#BA3030"))
+        excText.setTextColor(Color.parseColor("#BA3030"))
+
+        stage.text = "Stage: " + currQuestion.toString()
+
+        buttons[correctAnswerIndex].setBackgroundColor(Color.parseColor("#3FD054"))
+        buttons.forEach { it.isClickable = false }
+        excText.text = tresc + wynik.toString()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (wrongAnswers <= 0) {
+                gameOver("Time's up!")
+            } else {
+                buttons.forEach {
+                    it.setBackgroundColor(Color.parseColor("#99c1f1"))
+                    it.isClickable = true
+                }
+                excText.setTextColor(Color.parseColor("#1a3d59"))
+                isGoodText.text = ""
+                generateQuestion()
+            }
+        }, 1500)
     }
 
     private fun generateQuestion(){
@@ -367,50 +431,6 @@ class RankedActivity : AppCompatActivity() {
             else -> ""
         }
         excText.text = tresc
-    }
-
-    private fun handleTimeout(isGameOver: Boolean = false) {
-        if (soundReady) soundPool.play(badSoundId, 1f, 1f, 1, 0, 1f)
-
-        VibrationManager.vibrate(this, VibrationManager.VibrationType.WRONG)
-        isGoodText.setTextColor(android.graphics.Color.parseColor("#BA3030"))
-        excText.setTextColor(android.graphics.Color.parseColor("#BA3030"))
-        buttons[correctAnswerIndex].setBackgroundColor(android.graphics.Color.parseColor("#3FD054"))
-        buttons.forEach{
-            it.isClickable = false
-        }
-        excText.text = tresc + wynik.toString()
-
-        points = when {
-            currQuestion<4 -> -10
-            currQuestion<8 -> -7
-            currQuestion<10 -> 0
-            currQuestion<15 -> 5
-            currQuestion<20 -> 10
-            currQuestion<25 -> 20
-            else -> 40
-        }
-
-        GameData.getInstance(this).addPoints(points)
-        if (isGameOver || wrongAnswers <= 0) {
-            isGoodText.text = "You lost and got: $points points"
-        } else {
-            isGoodText.text = "Time's Up! You got: $points points"
-        }
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            buttons.forEach{
-                it.setBackgroundColor(android.graphics.Color.parseColor("#99c1f1"))
-                it.isClickable = true
-            }
-            excText.setTextColor(android.graphics.Color.parseColor("#1a3d59"))
-            isGoodText.text = ""
-            Intent(this, MainActivity::class.java).also {
-                it.putExtra("points", points)
-                startActivity(it)
-                finish()
-            }
-        }, 5000)
     }
 
     private fun lolixFun(){
